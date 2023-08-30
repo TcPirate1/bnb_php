@@ -1,4 +1,5 @@
 <?php
+//MYSQL database configuration
 define("DBUSER","root");
 define("DBPASSWORD","root");
 define("DBDATABASE","bnb");

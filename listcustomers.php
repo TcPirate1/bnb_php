@@ -1,5 +1,23 @@
 <!DOCTYPE HTML>
-<html><head><title>Browse customers with AJAX autocomplete</title>
+<html>
+  <head>
+    <title>Search customers</title>
+    
+    <?php
+    include "config.php";
+    $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
+
+    if (mysqli_connect_errno()){
+        echo "Error: Unable to connect to MySQL. " .mysqli_connect_error();
+        exit;
+    }
+    echo "Connectted via".mysqli_get_host_info($DBC);
+    mysql_close($DBC);
+
+    $query = 'SELECT customerID,firstname,lastname FROM customer ORDER BY lastname';
+    $result = mysqli_query($DBC, $query);
+    $rowcount = mysqli_num_rows($result);
+    ?>
 <script>
 
 function searchResult(searchstr) {
@@ -56,7 +74,7 @@ function searchResult(searchstr) {
 <body>
 
 <h1>Customer List Search by Lastname</h1>
-<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="/bnb/">[Return to main page]</a>
+<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="index.php">[Return to main page]</a>
 </h2>
 <form>
   <label for="lastname">Lastname: </label>
@@ -67,8 +85,29 @@ function searchResult(searchstr) {
 
 </form>
 <table id="tblcustomers" border="1">
-<thead><tr><th>Lastname</th><th>Firstname</th><th>actions</th></tr></thead>
+<thead>
+  <tr>
+    <th>Lastname</th>
+    <th>Firstname</th>
+    <th>actions</th>
+  </tr>
+</thead>
 
+<?php
+if ($rowcount > 0){
+            while ($row = mysqli_fetch_assoc($result)){
+                $id = $row['customerID'];
+                echo '<tr><td>'.$row['customerID']
+                .'</td><td>' .$row['fname']
+                .'</td><td>' .$row['lname']
+                .'</td><td>' .$row['email']
+                .'</td>';
+                echo '</tr>'.PHP_EOL;
+            }
+        }else echo "<h2>No customers found!</h2>";
+        mysqli_free_result($result);
+        mysqli_close($DBC);
+?>
 
 
 </table>
