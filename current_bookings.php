@@ -14,7 +14,10 @@
      echo "Error: Unable to connect to MySQL" .mysqli_connect_error();
      exit;
  }
- $query ='SELECT bookingID, checkInDate, checkOutDate FROM booking ORDER BY bookingID';
+ $query ='SELECT booking.bookingID, room.roomname, booking.checkInDate, booking.checkOutDate, customer.lastname, customer.firstname
+ FROM ((booking
+ INNER JOIN customer ON booking.customerID = customer.customerID)
+ INNER JOIN room ON booking.roomID = room.roomID ORDER BY booking.bookingID ASC)';
  $result = mysqli_query($DBC, $query);
  $rowcount = mysqli_num_rows($result);
  ?>
@@ -32,25 +35,25 @@
 
     if($rowcount > 0){
         while ($row = mysqli_fetch_assoc($result)){
-            $id =$row['ticketID'];
-            $fc = $row['flightcode'];
-            $sql = 'SELECT flightcode, flightname, departure_location, destination_location
-            FROM flight WHERE flightcode='.$fc;
+            $id =$row['bookingID'];
+            $rn = $row['roomname'];
+            $sql = 'SELECT flightname, departureDate, arrivalDate FROM flight WHERE bookingID' =.$id.;
                 
                 $res = mysqli_query($DBC,$sql);
-                $rowc=mysqli_num_rows($res);
+                $rowc = mysqli_num_rows($res);
 
                 if($rowc > 0){
                     $rowr = mysqli_fetch_assoc($res);
                 }
 
-                echo '<tr><td>'.$rowr['flightname'] .','.$row['departureDate']
+                echo '<tr>
+                <td>'.$rowr['flightname'] .','.$row['departureDate']
                 .','.$row['arrivalDate'].'</td>';
                 
-                echo '<td><a href="ticketdetails.php?id='.$id.'">[view]</a>';
+                echo '<td><a href="booking_details_view.php?id='.$id.'">[view]</a>';
                 echo '<a href="edit_a_booking.php?id='.$id.'">[edit]</a>';
                 echo '<a href="edit_add_room.php?id='.$id.'">[manage reviews]</a>';
-                echo '<a href="deleteroom.php?id='.$id.'">[delete]</a></td>';
+                echo '<a href="booking_preview_before_deletion.php?id='.$id.'">[delete]</a></td>';
                 echo '</tr>'.PHP_EOL;
 
                 mysqli_free_result($res);

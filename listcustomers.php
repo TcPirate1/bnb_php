@@ -97,7 +97,8 @@ function searchResult(searchstr) {
 if ($rowcount > 0){
             while ($row = mysqli_fetch_assoc($result)){
                 $id = $row['customerID'];
-                echo '<tr><td>'.$row['customerID']
+                echo '<tr>
+                <td>'.$row['customerID']
                 .'</td><td>' .$row['fname']
                 .'</td><td>' .$row['lname']
                 .'</td><td>' .$row['email']
