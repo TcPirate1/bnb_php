@@ -64,7 +64,7 @@ $result = mysqli_query($DBC,$query);
 $rowcount = mysqli_num_rows($result); 
 ?>
 <h1>Room details preview before deletion</h1>
-<h2><a href='listrooms.php'>[Return to the Room listing]</a><a href='/bnb/'>[Return to the main page]</a></h2>
+<h2><a href='listrooms.php'>[Return to the Room listing]</a><a href='/bnb_php/'>[Return to the main page]</a></h2>
 <?php
 
 //makes sure we have the Room

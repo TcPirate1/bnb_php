@@ -19,7 +19,7 @@ $result = mysqli_query($DBC,$query);
 $rowcount = mysqli_num_rows($result); 
 ?>
 <h1>Room list</h1>
-<h2><a href='addroom.php'>[Add a room]</a><a href="/bnb/">[Return to main page]</a></h2>
+<h2><a href='addroom.php'>[Add a room]</a><a href="/bnb_php/">[Return to main page]</a></h2>
 <table border="1">
 <thead><tr><th>Room Name</th><th>Type</th><th>Action</th></tr></thead>
 <?php

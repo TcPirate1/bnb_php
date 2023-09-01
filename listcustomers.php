@@ -2,22 +2,7 @@
 <html>
   <head>
     <title>Search customers</title>
-    
-    <?php
-    include "config.php";
-    $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
-
-    if (mysqli_connect_errno()){
-        echo "Error: Unable to connect to MySQL. " .mysqli_connect_error();
-        exit;
-    }
-    echo "Connectted via".mysqli_get_host_info($DBC);
-    mysql_close($DBC);
-
-    $query = 'SELECT customerID,firstname,lastname FROM customer ORDER BY lastname';
-    $result = mysqli_query($DBC, $query);
-    $rowcount = mysqli_num_rows($result);
-    ?>
+    <meta charset="utf-8" />
 <script>
 
 function searchResult(searchstr) {
@@ -40,29 +25,29 @@ function searchResult(searchstr) {
       for (var i = 1; i < rowCount; i++) {
          //delete from the top - row 0 is the table header we keep
          tbl.deleteRow(1); 
-      }      
+      }
       
       //populate the table
       //mbrs.length is the size of our array
       for (var i = 0; i < mbrs.length; i++) {
          var mbrid = mbrs[i]['customerID'];
-         var fn    = mbrs[i]['firstname'];
-         var ln    = mbrs[i]['lastname'];
+         var fn = mbrs[i]['firstname'];
+         var ln = mbrs[i]['lastname'];
       
          //concatenate our actions urls into a single string
-         var urls  = '<a href="viewcustomer.php?id='+mbrid+'">[view]</a>';
+         var urls = '<a href="viewcustomer.php?id='+mbrid+'">[view]</a>';
              urls += '<a href="editcustomer.php?id='+mbrid+'">[edit]</a>';
              urls += '<a href="deletecustomer.php?id='+mbrid+'">[delete]</a>';
          
-         //create a table row with three cells  
+         //create a table row with three cells
          tr = tbl.insertRow(-1);
-         var tabCell = tr.insertCell(-1);
-             tabCell.innerHTML = fn; //firstname
-         var tabCell = tr.insertCell(-1);
-             tabCell.innerHTML = ln; //lastname      
-         var tabCell = tr.insertCell(-1);
-             tabCell.innerHTML = urls; //action URLS            
-        }
+          var tabCell = tr.insertCell(-1);
+              tabCell.innerHTML = ln; //lastname
+          var tabCell = tr.insertCell(-1);
+          tabCell.innerHTML = fn; //firstname
+          var tabCell = tr.insertCell(-1);
+              tabCell.innerHTML = urls; //action URLS
+          }
     }
   }
   //call our php file that will look for a customer or customers matchign the seachstring
@@ -74,7 +59,7 @@ function searchResult(searchstr) {
 <body>
 
 <h1>Customer List Search by Lastname</h1>
-<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="index.php">[Return to main page]</a>
+<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="/bnb_php/">[Return to main page]</a>
 </h2>
 <form>
   <label for="lastname">Lastname: </label>
@@ -84,34 +69,15 @@ function searchResult(searchstr) {
          placeholder="Start typing a last name">
 
 </form>
+<br>
 <table id="tblcustomers" border="1">
 <thead>
   <tr>
-    <th>Lastname</th>
-    <th>Firstname</th>
-    <th>actions</th>
+    <th>Last name</th>
+    <th>First name</th>
+    <th>Actions</th>
   </tr>
 </thead>
-
-<?php
-if ($rowcount > 0){
-            while ($row = mysqli_fetch_assoc($result)){
-                $id = $row['customerID'];
-                echo '<tr>
-                <td>'.$row['customerID']
-                .'</td><td>' .$row['fname']
-                .'</td><td>' .$row['lname']
-                .'</td><td>' .$row['email']
-                .'</td>';
-                echo '</tr>'.PHP_EOL;
-            }
-        }else echo "<h2>No customers found!</h2>";
-        mysqli_free_result($result);
-        mysqli_close($DBC);
-?>
-
-
 </table>
 </body>
 </html>
-  

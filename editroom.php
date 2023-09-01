@@ -68,7 +68,7 @@ if ($rowcount > 0) {
   $row = mysqli_fetch_assoc($result);
 ?>
 <h1>Room Details Update</h1>
-<h2><a href='listrooms.php'>[Return to the room listing]</a><a href='/bnb/'>[Return to the main page]</a></h2>
+<h2><a href='listrooms.php'>[Return to the room listing]</a><a href='/bnb_php/'>[Return to the main page]</a></h2>
 
 <form method="POST" action="editroom.php">
   <input type="hidden" name="id" value="<?php echo $id;?>">

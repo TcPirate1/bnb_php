@@ -16,8 +16,8 @@
   </head>
   <body>
     <h1>Make a booking</h1>
-    <a href="#">[Return to the Bookings listing]</a>
-    <a href="#">[Return to main page]</a>
+    <a href="current_bookings.php">[Return to the Bookings listing]</a>
+    <a href="/bnb_php/">[Return to main page]</a>
 
     <h2>Booking for Test</h2>
     <form>

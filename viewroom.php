@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <?php
-include "checksession.php";
-checkUser();
-loginStatus(); 
+// include "checksession.php";
+// checkUser();
+// loginStatus(); 
 ?>
 <html><head><title>View Room</title> </head>
  <body>
@@ -33,7 +33,7 @@ $result = mysqli_query($DBC,$query);
 $rowcount = mysqli_num_rows($result); 
 ?>
 <h1>Room Details View</h1>
-<h2><a href='listrooms.php'>[Return to the Room listing]</a><a href='/bnb/'>[Return to the main page]</a></h2>
+<h2><a href='listrooms.php'>[Return to the Room listing]</a><a href='/bnb_php/'>[Return to the main page]</a></h2>
 <?php
 
 //makes sure we have the Room

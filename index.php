@@ -11,10 +11,10 @@
 ?>
 <h1>Welcome to Ongaonga Bed & Breakfast!</h1>
 <ul>
-<li><a href="/bnb/listcustomers.php">Customer listing</a>
-<li><a href="/bnb/listrooms.php">Rooms listing</a>
-<li><a href="/bnb/current_bookings.php">Bookings listing</a>
-<li><a href="/bnb/login.php">Login</a>
+<li><a href="listcustomers.php">Customer listing</a>
+<li><a href="listrooms.php">Rooms listing</a>
+<li><a href="current_bookings.php">Bookings listing</a>
+<li><a href="login.php">Login</a>
 </ul>
 
 </body>

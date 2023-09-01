@@ -1,15 +1,15 @@
 <!DOCTYPE HTML>
 <?php
-include "checksession.php";
-checkUser();
-loginStatus(); 
+// include "checksession.php";
+// checkUser();
+// loginStatus(); 
 ?>
 <html><head><title>View Customer</title> </head>
  <body>
 
 <?php
 include "config.php"; //load in any variables
-$DBC = mysqli_connect("127.0.0.1", DBUSER, DBPASSWORD, DBDATABASE);
+$DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
 //insert DB code from here onwards
 //check if the connection was good
