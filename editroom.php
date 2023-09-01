@@ -4,7 +4,7 @@
 
 <?php
 include "config.php"; //load in any variables
-$DBC = mysqli_connect("127.0.0.1", DBUSER, DBPASSWORD, DBDATABASE);
+$DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
 if (mysqli_connect_errno()) {
   echo "Error: Unable to connect to MySQL. ".mysqli_connect_error() ;
@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //check if we are saving data first by checking if the submit button exists in the array
 if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Update')) {     
 //validate incoming data - only the first field is done for you in this example - rest is up to you do
-    
+    $error = 0;
+    $msg = 'Error: ';
 //roomID (sent via a form ti is a string not a number so we try a type conversion!)    
     if (isset($_POST['id']) and !empty($_POST['id']) and is_integer(intval($_POST['id']))) {
        $id = cleanInput($_POST['id']); 
@@ -50,7 +51,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     if ($error == 0 and $id > 0) {
         $query = "UPDATE room SET roomname=?,description=?,roomtype=?,beds=? WHERE roomID=?";
         $stmt = mysqli_prepare($DBC,$query); //prepare the query
-        mysqli_stmt_bind_param($stmt,'sssi', $roomname, $description, $roomtype, $beds, $id); 
+        mysqli_stmt_bind_param($stmt,'sssdi', $roomname, $description, $roomtype, $beds, $id); 
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);    
         echo "<h2>Room details updated.</h2>";     
