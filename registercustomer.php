@@ -67,9 +67,9 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
        
 //save the customer data if the error flag is still clear
     if ($error == 0) {
-        $query = "INSERT INTO customer (firstname,lastname,email,password) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO customer (firstname,lastname,email,password) VALUES (?,?,?,?)";
         $stmt = mysqli_prepare($DBC,$query); //prepare the query
-        mysqli_stmt_bind_param($stmt,'sssss', $firstname, $lastname, $email,$username,$password); 
+        mysqli_stmt_bind_param($stmt,'ssss', $firstname, $lastname, $email,$password); 
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);    
         echo "<h2>customer saved</h2>";
@@ -85,11 +85,11 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 <form method="POST" action="registercustomer.php">
   <p>
     <label for="firstname">Name: </label>
-    <input type="text" id="firstname" name="firstname" minlength="5" maxlength="50" required> 
+    <input type="text" id="firstname" name="firstname" minlength="1" maxlength="50" required> 
   </p> 
   <p>
     <label for="lastname">Name: </label>
-    <input type="text" id="lastname" name="lastname" minlength="5" maxlength="50" required> 
+    <input type="text" id="lastname" name="lastname" minlength="1" maxlength="50" required> 
   </p>  
   <p>  
     <label for="email">Email: </label>

@@ -4,7 +4,7 @@
 
 <?php
 include "config.php"; //load in any variables
-$DBC = mysqli_connect("127.0.0.1", DBUSER, DBPASSWORD, DBDATABASE);
+$DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
 if (mysqli_connect_errno()) {
   echo "Error: Unable to connect to MySQL. ".mysqli_connect_error() ;
@@ -50,11 +50,11 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     if ($error == 0 and $id > 0) {
         $query = "UPDATE customer SET firstname=?,lastname=?,email=? WHERE customerID=?";
         $stmt = mysqli_prepare($DBC,$query); //prepare the query
-        mysqli_stmt_bind_param($stmt,'ssssi', $firstname, $lastname, $email,$username,$id); 
+        mysqli_stmt_bind_param($stmt,'sssi', $firstname, $lastname, $email,$id); 
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);    
         echo "<h2>customer details updated.</h2>";     
-//        header('Location: http://localhost/bit608/listcustomers.php', true, 303);      
+//        header('Location: http://localhost/bit608/listcustomers.php', true, 303);
     } else { 
       echo "<h2>$msg</h2>".PHP_EOL;
     }      
@@ -74,12 +74,12 @@ if ($rowcount > 0) {
   <input type="hidden" name="id" value="<?php echo $id;?>">
   <p>
     <label for="firstname">Name: </label>
-    <input type="text" id="firstname" name="firstname" minlength="5" 
+    <input type="text" id="firstname" name="firstname" minlength="1" 
            maxlength="50" required value="<?php echo $row['firstname']; ?>"> 
   </p> 
   <p>
     <label for="lastname">Name: </label>
-    <input type="text" id="lastname" name="lastname" minlength="5" 
+    <input type="text" id="lastname" name="lastname" minlength="1" 
            maxlength="50" required value="<?php echo $row['lastname']; ?>">  
   </p>  
   <p>  
