@@ -10,7 +10,7 @@
 
 <body>
     <?php
-        // include "checksession.php";
+        include "checksession.php";
 
      
                  
@@ -63,7 +63,7 @@
     <h1>Login</h1>
     <h2>
         <a href="registercustomer.php">[Creat new customer]</a>
-        <a href="index.php">[Return to main page]</a>
+        <a href="/booktickets">[Return to main page]</a>
     </h2>
 
     <form method="POST">
