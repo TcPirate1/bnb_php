@@ -16,8 +16,8 @@
   </head>
   <body>
     <h1>Make a booking</h1>
-    <a href="current_bookings.php">[Return to the Bookings listing]</a>
-    <a href="/bnb_php/">[Return to main page]</a>
+    <h2><a href="current_bookings.php">[Return to the Bookings listing]</a>
+    <a href="/bnb_php/">[Return to main page]</a></h2>
 
     <h2>Booking for Test</h2>
     <form>
@@ -55,7 +55,7 @@
       <textarea rows="6" cols="25"></textarea>
       <br />
       <button>Add</button>
-      <a href="#">[Cancel]</a>
+      <a href="current_bookings.php">[Cancel]</a>
     </form>
 
     <hr />

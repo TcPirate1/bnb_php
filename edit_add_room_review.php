@@ -9,8 +9,8 @@
   </head>
   <body>
     <h1>Edit a booking</h1>
-    <a href="#">[Return to the booking listing]</a>
-    <a href="#">[Return to main page]</a>
+    <a href="current_bookings.php">[Return to the booking listing]</a>
+    <a href="/bnb_php/">[Return to main page]</a>
 
     <h2>Review made by Test</h2>
 

@@ -4,10 +4,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Booking preview before deletion</title>
+    <title>Booking Details View</title>
   </head>
   <style>
-    div {
+    fieldset {
       width: 50%;
       border-left: 1px solid #000;
       border-right: 1px solid #000;
@@ -32,20 +32,25 @@
     }
   </style>
   <body>
-    <h1>Booking preview before deletion</h1>
-    <a href="#">[Return to the booking listing]</a>
-    <a href="#">[Return to main page]</a>
+    <h2>Logged in as test</h2>
+    <h1>Booking Details View</h1>
+    <a href="current_bookings.php">[Return to the booking listing]</a>
+    <a href="/bnb_php/">[Return to main page]</a>
 
-    <div>
-      <p class="roomdetail"><span>Booking detail #2</span></p>
+    <fieldset>
+      <legend>Room detail #2</legend>
       <p>Room name:</p>
       <p class="information">Kellie</p>
       <p>Checkin Date:</p>
       <p class="information">2018-09-15</p>
       <p>Checkout Date:</p>
-    </div>
-    <h2>Are you sure you want to delete this Booking?</h2>
-    <button>Delete</button>
-    <a href="#">[Cancel]</a>
+      <p class="information">2018-09-19</p>
+      <p>Contact number:</p>
+      <p class="information">(001) 123 1234</p>
+      <p>Extras:</p>
+      <p class="information">nothing</p>
+      <p>Review:</p>
+      <p class="information">nothing</p>
+    </fieldset>
   </body>
 </html>

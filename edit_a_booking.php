@@ -9,8 +9,10 @@
   </head>
   <body>
     <h1>Edit a booking</h1>
-    <a href="#">[Return to the Bookings listing]</a>
-    <a href="#">[Return to main page]</a>
+    <h2>
+      <a href="current_bookings.php">[Return to the Bookings listing]</a>
+      <a href="/bnb_php/">[Return to main page]</a>
+    </h2>
 
     <h2>Booking made for the test</h2>
 
@@ -49,7 +51,7 @@
       <textarea rows="6" cols="25">nothing</textarea>
       <br />
       <button>Update</button>
-      <a href="#">[Cancel]</a>
+      <a href="current_bookings.php">[Cancel]</a>
     </form>
   </body>
   <script>
