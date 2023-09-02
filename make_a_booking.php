@@ -90,7 +90,8 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
        $bookingExtras = '';
     }
 
-    $custID = 21; //hard coded for the moment
+    $id = cleanInput($_POST['roomID']);
+    $custID = 1; //hard coded for the moment
 
     if ($error == 0) {
         $query = "INSERT INTO booking (roomID, customerID, checkInDate,checkOutDate,contactNumber,bookingExtras) VALUES (?,?,?,?,?,?)";
@@ -101,10 +102,9 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
           echo "<h2>Booking saved</h2>".PHP_EOL;
         }
         else {
-          echo "<h2>MySQLi Error ".mysqli_error($DBC)."</h2>";
+          echo "<h2>MySQLi Error: ".mysqli_error($DBC)."</h2>";
         }
         mysqli_stmt_close($stmt);
-        echo "<h2>Booking saved</h2>";
     } else {
       echo "<h2>$msg</h2>".PHP_EOL;
     }      
@@ -120,7 +120,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     <h2>Booking for Test</h2>
     <form method="POST" action="make_a_booking.php">
       <label for="roomNO">Room (name,type,beds):</label>
-      <select name="roomNO">
+      <select name="roomID">
         <?php
         if ($rowcount > 0) {
           while ($row = mysqli_fetch_assoc($result))
@@ -174,13 +174,28 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     <hr />
 
     <h2>Search for room avaliability</h2>
-    <form>
+    <form id="searchForm" method="POST">
       <label>Start date:</label>
-      <input id="startDate" type="text" placeholder="yyyy-mm-dd" pattern="^\d{4}-\d{2}-\d{2}"></input>
+      <input id="from_date" name="startDate" type="text" placeholder="yyyy-mm-dd" pattern="^\d{4}-\d{2}-\d{2}"></input>
       <label>End date:</label>
-      <input id="endDate" type="text" placeholder="yyyy-mm-dd" pattern="^\d{4}-\d{2}-\d{2}"></input>
-      <input type="submit" value="Search avaliability" onclick="searchRooms()"></input>
+      <input id="to_date" name="endDate" type="text" placeholder="yyyy-mm-dd" pattern="^\d{4}-\d{2}-\d{2}"></input>
+      <input type="submit" value="Search avaliability"></input>
     </form>
+
+    <br><br>
+
+    <div class="row">
+        <table id="roomBookings" border="1">
+            <thead>
+                <tr>
+                    <th>Room name</th>
+                    <th>Room Type</th>
+                    <th>Beds</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
   </body>
   <script>
     $(function () {
@@ -215,24 +230,54 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         }
         return date;
       }
-
-      function searchRooms() {
-        var startDate = $("#startDate").val();
-        var endDate = $("#endDate").val();
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            $("#result").html(this.responseText);
-          }
-        };
-        xhttp.open(
-        "GET",
-        "filter.php?fromDate=" + fromDate + "&toDate=" + toDate,
-        true
-      )
-      xhttp.send()
-    }
   });
+
+  $(document).ready(function() {
+			  $('#from_date').datepicker({dateFormat: 'yy-mm-dd'});
+				$('#to_date').datepicker({dateFormat: 'yy-mm-dd'});
+				
+            $('#searchForm').submit(function(event) {
+                var formData = {
+                    startDate: $('#from_date').val(),
+                    endDate: $('#to_date').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "searchAvaliability.php",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+
+                }).done(function(data) {
+                    var tbl = document.getElementById("roomBookings"); //find the table in the HTML  
+                    var rowCount = tbl.rows.length;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        //delete from the top - row 0 is the table header we keep
+                        tbl.deleteRow(1);
+                    }
+
+                    //populate the table
+                    //data.length is the size of our array
+
+                    for (var i = 0; i < data.length; i++) {
+                        var rn = data[i]['roomname'];
+                        var rt = data[i]['roomtype'];
+                        var bd = data[i]['beds'];
+                        //create a table row with four cells
+                        //Insert new cell(s) with content at the end of a table row 
+                        //https://www.w3schools.com/jsref/met_tablerow_insertcell.asp  
+                        tr = tbl.insertRow(-1);
+                        var tabCell = tr.insertCell(-1);
+                        tabCell.innerHTML = rn;
+                        var tabCell = tr.insertCell(-1);
+                        tabCell.innerHTML = rt;
+                        var tabCell = tr.insertCell(-1);
+                        tabCell.innerHTML = bd;
+                    }
+                });
+                event.preventDefault();
+            })
+        })
   </script>
 </html>
