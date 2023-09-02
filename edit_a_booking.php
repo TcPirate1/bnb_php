@@ -7,6 +7,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit a booking</title>
   </head>
+
+  <?php
+    include "config.php"; //load in any variables
+    $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
+
+    if (mysqli_connect_errno()) {
+        echo "Error: Unable to connect to MySQL. ".mysqli_connect_error() ;
+        exit; //stop processing the page further
+    };
+  //Retrieve data to populate <select> dropdown
+  $query = "SELECT roomID, roomname,roomtype,beds FROM room";
+  $result = mysqli_query($DBC,$query);
+  $rowcount = mysqli_num_rows($result);
+
+  // function to clean input but not validate type and content
+function cleanInput($data) {  
+  return htmlspecialchars(stripslashes(trim($data)));
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $id = $_GET['id'];
+    if (empty($id) or !is_numeric($id)) {
+        echo "<h2>Invalid room ID</h2>"; //simple error feedback
+        exit;
+    }
+
+    if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Update')) {
+      $error = 0;
+      $msg = 'Error: ';
+      if (isset($_POST['id']) and !empty($_POST['id']) and is_integer(intval($_POST['id']))) {
+      $id = cleanInput($_POST['id']); 
+    } else {
+      $error++; //bump the error flag
+      $msg .= 'Invalid room ID '; //append error message
+      $id = 0;  
+    }
+
+    if (isset($_POST['from']) and !empty($_POST['from']) and is_string($_POST['from'])) {
+       $checkindate = cleanInput($_POST['from']);
+       
+       if (!preg_match("/^\d{4}-\d{2}-\d{2}$/",$checkindate)) {
+          $error++; //bump the error flag
+          $msg .= 'checkin date does not match the pattern'; //append error message
+          $checkindate = '';
+       }
+    } else {
+       $error++; //bump the error flag
+       $msg .= 'Invalid checkin date '; //append eror message
+       $checkindate = '';
+    }
+
+    if (isset($_POST['to']) and !empty($_POST['to']) and is_string($_POST['to'])) {
+       $checkoutdate = cleanInput($_POST['to']);
+       
+       if (!preg_match("/^\d{4}-\d{2}-\d{2}$/",$checkoutdate)) {
+          $error++; //bump the error flag
+          $msg .= 'checkout date does not match the pattern'; //append error message
+          $checkoutdate = '';
+       }
+    } else {
+       $error++; //bump the error flag
+       $msg .= 'Invalid checkout date '; //append eror message
+       $checkoutdate = '';
+    }
+    
+    if (isset($_POST['contactNum']) and !empty($_POST['contactNum']) and is_string($_POST['contactNum'])) {
+       $contact = cleanInput($_POST['contactNum']);
+       
+       if (!preg_match("/\([0-9]{3}\) [0-9]{3} [0-9]{4}/",$contact)) {
+          $error++; //bump the error flag
+          $msg .= 'Contact Number does not match the pattern'; //append error message
+          $contact = '';
+       }
+    } else {
+       $error++; //bump the error flag
+       $msg .= 'Invalid contact number '; //append eror message
+       $contact = '';
+    }
+
+    if (isset($_POST['bookingExtras']) and is_string($_POST['bookingExtras'])) {
+       $bookingExtras = cleanInput($_POST['bookingExtras']);
+       $bookingExtras = (strlen($bookingExtras)>255)?substr($bookingExtras,1,255):$bookingExtras;
+    } else {
+       $error++; //bump the error flag
+       $msg .= 'Invalid booking extras'; //append eror message
+       $bookingExtras = '';
+    }
+
+    $id = cleanInput($_POST['roomID']);
+    $custID = 1; //hard coded for the moment
+    if ($error == 0 and $id > 0) {
+        $query = "UPDATE booking SET from=?,to=?,contactNum=?,bookingExtras=? WHERE roomID=?";
+        $stmt = mysqli_prepare($DBC,$query); //prepare the query
+        mysqli_stmt_bind_param($stmt,'sssdi', $checkindate, $checkoutdate, $contact, $bookingExtras, $id);
+        if (mysqli_stmt_execute($stmt))
+        {
+          echo "<h2>Booking updated</h2>".PHP_EOL;
+        }
+        else {
+          echo "<h2>MySQLi Error: ".mysqli_error($DBC)."</h2>";
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+      echo "<h2>$msg</h2>".PHP_EOL;
+    }
+    mysqli_close($DBC);
+  }
+}
+
+?>
   <body>
     <h1>Edit a booking</h1>
     <h2>
@@ -18,8 +128,20 @@
 
     <form>
       <label>Room (name,type,beds):</label>
-      <select>
-        <option>Kellie,S,5</option>
+      <select name="roomID">
+        <?php
+        if ($rowcount > 0) {
+          while ($row = mysqli_fetch_assoc($result))
+          {
+            $id = $row['roomID']; ?>
+          <option value = "<?php echo $id;?>">
+          <?php echo $row['roomname'].', '.$row['roomtype'].', '.$row['beds']; ?>
+          </option>
+          <?php
+          }
+        }
+        else echo "<option>No rooms found!</option>";
+        ?>
       </select>
       <br />
       <label>Checkin date:</label>
