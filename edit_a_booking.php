@@ -27,9 +27,9 @@ function cleanInput($data) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $id = $_GET['id'];
-    if (empty($id) or !is_numeric($id)) {
-        echo "<h2>Invalid room ID</h2>"; //simple error feedback
+    $bookid = $_GET['id'];
+    if (empty($bookid) or !is_numeric($bookid)) {
+        echo "<h2>Invalid Booking ID</h2>"; //simple error feedback
         exit;
     }
 
@@ -95,12 +95,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
        $bookingExtras = '';
     }
 
-    $id = cleanInput($_POST['roomID']);
+    $bookid = cleanInput($_POST['bookingID']);
     $custID = 1; //hard coded for the moment
-    if ($error == 0 and $id > 0) {
-        $query = "UPDATE booking SET from=?,to=?,contactNum=?,bookingExtras=? WHERE roomID=?";
+    if ($error == 0 and $bookid > 0) {
+        $query = "UPDATE booking SET from=?,to=?,contactNum=?,bookingExtras=? WHERE bookingID=?";
         $stmt = mysqli_prepare($DBC,$query); //prepare the query
-        mysqli_stmt_bind_param($stmt,'sssdi', $checkindate, $checkoutdate, $contact, $bookingExtras, $id);
+        mysqli_stmt_bind_param($stmt,'sssdi', $checkindate, $checkoutdate, $contact, $bookingExtras, $bookid);
         if (mysqli_stmt_execute($stmt))
         {
           echo "<h2>Booking updated</h2>".PHP_EOL;
@@ -126,7 +126,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     <h2>Booking made for the test</h2>
 
-    <form>
+    <form action="edit_a_booking.php" method="POST">
+      <input type="hidden" name="id" value="<?php echo $bookid;?>">
       <label>Room (name,type,beds):</label>
       <select name="roomID">
         <?php
