@@ -6,6 +6,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit a booking</title>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   </head>
 
   <?php
@@ -37,10 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       $error = 0;
       $msg = 'Error: ';
       if (isset($_POST['id']) and !empty($_POST['id']) and is_integer(intval($_POST['id']))) {
-      $id = cleanInput($_POST['id']); 
+      $bookid = cleanInput($_POST['id']);
     } else {
       $error++; //bump the error flag
-      $msg .= 'Invalid room ID '; //append error message
+      $msg .= 'Invalid booking ID '; //append error message
       $id = 0;  
     }
 
@@ -95,12 +102,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
        $bookingExtras = '';
     }
 
-    $bookid = cleanInput($_POST['bookingID']);
+    $roomID = cleanInput($_POST['roomID']);
     $custID = 1; //hard coded for the moment
     if ($error == 0 and $bookid > 0) {
-        $query = "UPDATE booking SET from=?,to=?,contactNum=?,bookingExtras=? WHERE bookingID=?";
+        $query = "UPDATE booking SET checkInDate=?,checkOutDate=?,contactNumber=?,bookingExtras=?, roomID=? WHERE bookingID=?";
         $stmt = mysqli_prepare($DBC,$query); //prepare the query
-        mysqli_stmt_bind_param($stmt,'sssdi', $checkindate, $checkoutdate, $contact, $bookingExtras, $bookid);
+        mysqli_stmt_bind_param($stmt,'ssssi', $checkindate, $checkoutdate, $contact, $bookingExtras, $roomID);
         if (mysqli_stmt_execute($stmt))
         {
           echo "<h2>Booking updated</h2>".PHP_EOL;
@@ -145,46 +152,50 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         ?>
       </select>
       <br />
-      <label>Checkin date:</label>
+      <label for="from">Checkin date:</label>
       <input
         required
+        name="from"
         id="startDate"
-        type="date"
+        type="text"
         placeholder="yyyy-mm-dd"
         pattern="^\d{4}-\d{2}-\d{2}"
       />
       <br />
-      <label>Checkout date:</label>
+      <label for="to">Checkout date:</label>
       <input
         required
+        name="to"
         id="endDate"
-        type="date"
+        type="text"
         placeholder="yyyy-mm-dd"
         pattern="^\d{4}-\d{2}-\d{2}"
       />
       <br />
-      <label>Contact number:</label>
+      <label for="contactNum">Contact number:</label>
       <input
+        name="contactNum"
         type="text"
         placeholder="(###) ### ####"
         pattern="\(\d{3}\) \d{3} \d{4}"
       />
       <br />
-      <label>Booking extras:</label>
-      <textarea rows="6" cols="25">nothing</textarea>
+      <label for="bookingExtras">Booking extras:</label>
+      <textarea name="bookingExtras" rows="6" cols="25">nothing</textarea>
       <br />
-      <button>Update</button>
+      <input type="submit" name="submit" value="Update"/>
       <a href="current_bookings.php">[Cancel]</a>
     </form>
   </body>
   <script>
     $(function () {
-      var dateFormat = "mm/dd/yy",
+      var dateFormat = "yy-mm-dd",
         from = $("#startDate")
           .datepicker({
             defaultDate: "+1w",
             changeMonth: true,
             numberOfMonths: 2,
+            dateFormat: dateFormat
           })
           .on("change", function () {
             to.datepicker("option", "minDate", getDate(this));
@@ -194,6 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             defaultDate: "+1w",
             changeMonth: true,
             numberOfMonths: 2,
+            dateFormat: dateFormat
           })
           .on("change", function () {
             from.datepicker("option", "maxDate", getDate(this));
