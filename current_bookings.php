@@ -52,7 +52,7 @@
                 
                 echo '<td><a href="booking_details_view.php?id='.$id.'">[view]</a>';
                 echo '<a href="edit_a_booking.php?id='.$id.'">[edit]</a>';
-                echo '<a href="edit_add_room.php?id='.$id.'">[manage reviews]</a>'; //Change link
+                echo '<a href="edit_add_room_review.php?id='.$id.'">[manage reviews]</a>'; //Change link
                 echo '<a href="booking_preview_before_deletion.php?id='.$id.'">[delete]</a></td>';
                 echo '</tr>'.PHP_EOL;
 

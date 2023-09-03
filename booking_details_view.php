@@ -6,51 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Booking Details View</title>
   </head>
-  <style>
-    fieldset {
-      width: 50%;
-      border-left: 1px solid #000;
-      border-right: 1px solid #000;
-      border-bottom: 1px solid #000;
-    }
-    p {
-      margin: 0;
-      padding: 0 10px;
-    }
-    p.information {
-      padding: 0 50px;
-    }
-    p.roomdetail {
-      text-align: left;
-      border-bottom: 1px solid #000;
-      line-height: 0.1em;
-      margin: 10px 0 20px;
-    }
-    p span {
-      background: #fff;
-      padding: 0 10px;
-    }
-  </style>
   <body>
+    <?php
+      include "config.php"; //load in any variables
+      $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
+
+      if (mysqli_connect_errno()) {
+          echo "Error: Unable to connect to MySQL. ".mysqli_connect_error() ;
+          exit; //stop processing the page further
+      }
+
+      if ($_SERVER["REQUEST_METHOD"] == "GET") {
+          $id = $_GET['id'];
+          if (empty($id) or !is_numeric($id)) {
+              echo "<h2>Invalid Booking ID</h2>"; //simple error feedback
+              exit;
+          }
+        }
+
+        $query = 'SELECT * FROM booking
+        INNER JOIN customer ON booking.customerID = customer.customerID
+        INNER JOIN room ON booking.roomID = room.roomID WHERE booking.bookingID='.$id;
+        $result = mysqli_query($DBC,$query);
+        $rowcount = mysqli_num_rows($result);
+    ?>
     <h2>Logged in as test</h2>
     <h1>Booking Details View</h1>
     <a href="current_bookings.php">[Return to the booking listing]</a>
     <a href="/bnb_php/">[Return to main page]</a>
-
-    <fieldset>
-      <legend>Room detail #2</legend>
-      <p>Room name:</p>
-      <p class="information">Kellie</p>
-      <p>Checkin Date:</p>
-      <p class="information">2018-09-15</p>
-      <p>Checkout Date:</p>
-      <p class="information">2018-09-19</p>
-      <p>Contact number:</p>
-      <p class="information">(001) 123 1234</p>
-      <p>Extras:</p>
-      <p class="information">nothing</p>
-      <p>Review:</p>
-      <p class="information">nothing</p>
-    </fieldset>
+    <?php
+    if ($rowcount > 0) {  
+      echo "<fieldset><legend>Booking #$id</legend><dl>";
+      $row = mysqli_fetch_assoc($result);
+      echo "<dt>Room name:</dt><dd>".$row['roomname']."</dd>".PHP_EOL;
+      echo "<dt>Checkin Date:</dt><dd>".$row['checkInDate']."</dd>".PHP_EOL;
+      echo "<dt>Contact Number:</dt><dd>".$row['contactNumber']."</dd>".PHP_EOL;
+      echo "<dt>Extras:</dt><dd>".$row['bookingExtras']."</dd>".PHP_EOL;
+      echo "<dt>Review:</dt><dd>".$row['bookingReview']."</dd>".PHP_EOL;
+      echo '</dl></fieldset>'.PHP_EOL;
+      } else echo "<h2>No Room found!</h2>";
+    ?>
   </body>
 </html>
