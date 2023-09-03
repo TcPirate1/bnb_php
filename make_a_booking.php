@@ -23,10 +23,6 @@
         echo "Error: Unable to connect to MySQL. ".mysqli_connect_error() ;
         exit; //stop processing the page further
     };
-  //Retrieve data to populate <select> dropdown
-  $query = "SELECT roomID, roomname,roomtype,beds FROM room";
-  $result = mysqli_query($DBC,$query);
-  $rowcount = mysqli_num_rows($result);
 
   // function to clean input but not validate type and content
 function cleanInput($data) {  
@@ -122,6 +118,10 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
       <label for="roomNO">Room (name,type,beds):</label>
       <select name="roomID">
         <?php
+        //Retrieve data to populate <select> dropdown
+        $query = "SELECT roomID, roomname,roomtype,beds FROM room";
+        $result = mysqli_query($DBC,$query);
+        $rowcount = mysqli_num_rows($result);
         if ($rowcount > 0) {
           while ($row = mysqli_fetch_assoc($result))
           {
