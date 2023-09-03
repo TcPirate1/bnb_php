@@ -23,10 +23,6 @@
         echo "Error: Unable to connect to MySQL. ".mysqli_connect_error() ;
         exit; //stop processing the page further
     };
-  //Retrieve data to populate <select> dropdown
-  $query = "SELECT roomID, roomname,roomtype,beds FROM room";
-  $result = mysqli_query($DBC,$query);
-  $rowcount = mysqli_num_rows($result);
 
   // function to clean input but not validate type and content
 function cleanInput($data) {  
@@ -39,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo "<h2>Invalid Booking ID</h2>"; //simple error feedback
         exit;
     }
+  }
 
     if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Update')) {
       $error = 0;
@@ -79,14 +76,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
        $checkoutdate = '';
     }
     
-    if (isset($_POST['contactNum']) and !empty($_POST['contactNum']) and is_string($_POST['contactNum'])) {
+    if (isset($_POST['contactNum']) and is_string($_POST['contactNum'])) {
        $contact = cleanInput($_POST['contactNum']);
        
-       if (!preg_match("/\([0-9]{3}\) [0-9]{3} [0-9]{4}/",$contact)) {
-          $error++; //bump the error flag
-          $msg .= 'Contact Number does not match the pattern'; //append error message
-          $contact = '';
-       }
+       if (strlen($contact)>0) {
+        if (!preg_match("/\([0-9]{3}\) [0-9]{3} [0-9]{4}/",$contact)) {
+            $error++; //bump the error flag
+            $msg .= 'Contact Number does not match the pattern'; //append error message
+            $contact = '';
+        }
+      }
     } else {
        $error++; //bump the error flag
        $msg .= 'Invalid contact number '; //append eror message
@@ -107,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if ($error == 0 and $bookid > 0) {
         $query = "UPDATE booking SET checkInDate=?,checkOutDate=?,contactNumber=?,bookingExtras=?, roomID=? WHERE bookingID=?";
         $stmt = mysqli_prepare($DBC,$query); //prepare the query
-        mysqli_stmt_bind_param($stmt,'ssssi', $checkindate, $checkoutdate, $contact, $bookingExtras, $roomID);
+        mysqli_stmt_bind_param($stmt,'ssssii', $checkindate, $checkoutdate, $contact, $bookingExtras, $roomID, $bookid);
         if (mysqli_stmt_execute($stmt))
         {
           echo "<h2>Booking updated</h2>".PHP_EOL;
@@ -121,9 +120,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
     mysqli_close($DBC);
   }
-}
-
 ?>
+
   <body>
     <h1>Edit a booking</h1>
     <h2>
@@ -138,6 +136,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       <label>Room (name,type,beds):</label>
       <select name="roomID">
         <?php
+        //Retrieve data to populate <select> dropdown
+        $query = "SELECT roomID, roomname,roomtype,beds FROM room";
+        $result = mysqli_query($DBC,$query);
+        $rowcount = mysqli_num_rows($result);
         if ($rowcount > 0) {
           while ($row = mysqli_fetch_assoc($result))
           {
