@@ -84,11 +84,11 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 
 <form method="POST" action="registercustomer.php">
   <p>
-    <label for="firstname">Name: </label>
+    <label for="firstname">First Name: </label>
     <input type="text" id="firstname" name="firstname" minlength="1" maxlength="50" required> 
   </p> 
   <p>
-    <label for="lastname">Name: </label>
+    <label for="lastname">Last Name: </label>
     <input type="text" id="lastname" name="lastname" minlength="1" maxlength="50" required> 
   </p>  
   <p>  
