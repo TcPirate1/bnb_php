@@ -13,7 +13,7 @@ function checkUser(){
 
     else{
         $_SESSION['URI'] ='/' .$_SERVER['REQUEST_URI'];
-        header(('Location:/booktickets/login.php'),true, 303);
+        header(('Location:/bnb_php/login.php'),true, 303);
 
     }
 }
@@ -37,11 +37,11 @@ function login($id, $username){
 
     }
     else{
-        $_SESSION['URI'] = '/booktickets/ticketslisting.php';
+        $_SESSION['URI'] = '/bnb_php/current_bookings.php';
         $uri = $_SESSION['URI'];
     }
 
-    header('Location: /booktickets/ticketslisting.php', true, 303);
+    header('Location: /bnb_php/current_bookings.php', true, 303);
 
     $_SESSION['loggedin']=1;
     $_SESSION['userid']=$id;
@@ -54,7 +54,7 @@ function logout(){
     $_SESSION['userid']= -1;
     $_SESSION['username']= '';
     $_SESSION['URI']='';
-    header('Location:/booktickets/login.php', true, 303);
+    header('Location:/bnb_php/login.php', true, 303);
 
 }
 

@@ -62,8 +62,8 @@
 
     <h1>Login</h1>
     <h2>
-        <a href="registercustomer.php">[Creat new customer]</a>
-        <a href="/booktickets">[Return to main page]</a>
+        <a href="registercustomer.php">[Create new customer]</a>
+        <a href="/bnb_php/">[Return to main page]</a>
     </h2>
 
     <form method="POST">
