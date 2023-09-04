@@ -39,9 +39,17 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
        $id = 0;  
     }   
 //roomname
-       $roomname = cleanInput($_POST['roomname']); 
+       if (isset($_POST['roomname']) and !empty($_POST['roomname']) and is_string($_POST['roomname'])) {
+       $fn = cleanInput($_POST['roomname']); 
+       $roomname = (strlen($fn)>50)?substr($fn,1,50):$fn; //check length and clip if too big
+       //we would also do context checking here for contents, etc       
+    } else {
+       $error++; //bump the error flag
+       $msg .= 'Invalid roomname '; //append eror message
+       $roomname = '';  
+    }
 //description
-       $description = cleanInput($_POST['description']);        
+       $description = cleanInput($_POST['description']);
 //roomtype
        $roomtype = cleanInput($_POST['roomtype']);         
 //beds

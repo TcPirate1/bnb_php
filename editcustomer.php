@@ -40,12 +40,33 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
        $id = 0;  
     }   
 //firstname
-       $firstname = cleanInput($_POST['firstname']); 
+       if (isset($_POST['firstname']) and !empty($_POST['firstname']) and is_string($_POST['firstname'])) {
+       $fn = cleanInput($_POST['firstname']);
+       $firstname = (strlen($fn)>50)?substr($fn,1,50):$fn; //check length and clip if too big
+       //we would also do context checking here for contents, etc
+    } else {
+       $error++; //bump the error flag
+       $msg .= 'Invalid firstname '; //append eror message
+       $firstname = '';
+    } 
 //lastname
-       $lastname = cleanInput($_POST['lastname']);        
+    if (isset($_POST['lastname']) and !empty($_POST['lastname']) and is_string($_POST['lastname'])) {
+      $ln = cleanInput($_POST['lastname']);
+       $lastname = (strlen($ln)>50)?substr($ln,1,50):$ln;
+    } else {
+       $error++; //bump the error flag
+       $msg .= 'Invalid lastname '; //append eror message
+       $lastname = '';
+    }
 //email
-       $email = cleanInput($_POST['email']);         
-    
+    if (isset($_POST['email']) and !empty($_POST['email']) and is_string($_POST['email'])) {
+       $em = cleanInput($_POST['email']);
+       $email = (strlen($em)>100)?substr($em,1,100):$em;
+    } else {
+       $error++; //bump the error flag
+       $msg .= 'Invalid email '; //append eror message
+       $email = '';
+    }
 //save the customer data if the error flag is still clear and customer id is > 0
     if ($error == 0 and $id > 0) {
         $query = "UPDATE customer SET firstname=?,lastname=?,email=? WHERE customerID=?";

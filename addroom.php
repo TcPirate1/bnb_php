@@ -32,14 +32,14 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
        $error++; //bump the error flag
        $msg .= 'Invalid roomname '; //append eror message
        $roomname = '';  
-    } 
+    }
  
 //description
-       $description = cleanInput($_POST['description']);        
+       $description = cleanInput($_POST['description']);
 //roomtype
-       $roomtype = cleanInput($_POST['roomtype']);            
+       $roomtype = cleanInput($_POST['roomtype']);
 //beds    
-       $beds = cleanInput($_POST['beds']);        
+       $beds = cleanInput($_POST['beds']);
        
 //save the room data if the error flag is still clear
     if ($error == 0) {
