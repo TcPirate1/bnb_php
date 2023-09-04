@@ -16,6 +16,7 @@
   </head>
 
   <?php
+    include "checksession.php";
     include "config.php"; //load in any variables
     $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
@@ -102,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     $roomID = cleanInput($_POST['roomID']);
-    $custID = 1; //hard coded for the moment
+    $custID = cleanInput($_SESSION['userid']);
     if ($error == 0 and $bookid > 0) {
         $query = "UPDATE booking SET checkInDate=?,checkOutDate=?,contactNumber=?,bookingExtras=?, roomID=? WHERE bookingID=?";
         $stmt = mysqli_prepare($DBC,$query); //prepare the query
@@ -129,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       <a href="/bnb_php/">[Return to main page]</a>
     </h2>
 
-    <h2>Booking made for the test</h2>
+    <h2>Booking for <?php echo $_SESSION['username']?></h2>
 
     <form action="edit_a_booking.php" method="POST">
       <input type="hidden" name="id" value="<?php echo $bookid;?>">

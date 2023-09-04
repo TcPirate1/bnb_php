@@ -33,18 +33,18 @@ $result = mysqli_query($DBC,$query);
 $rowcount = mysqli_num_rows($result); 
 ?>
 <h1>Customer Details View</h1>
-<h2><a href='listcustomers.php'>[Return to the Customer listing]</a><a href='/bnb/'>[Return to the main page]</a></h2>
+<h2><a href='listcustomers.php'>[Return to the Customer listing]</a><a href='/bnb_php/'>[Return to the main page]</a></h2>
 <?php
 
 //makes sure we have the customer
 if ($rowcount > 0) {  
    echo "<fieldset><legend>customer detail #$id</legend><dl>"; 
    $row = mysqli_fetch_assoc($result);
-   echo "<dt>Name:</dt><dd>".$row['firstname']."</dd>".PHP_EOL;
-   echo "<dt>Lastname:</dt><dd>".$row['lastname']."</dd>".PHP_EOL;
+   echo "<dt>First Name:</dt><dd>".$row['firstname']."</dd>".PHP_EOL;
+   echo "<dt>Last name:</dt><dd>".$row['lastname']."</dd>".PHP_EOL;
    echo "<dt>Email:</dt><dd>".$row['email']."</dd>".PHP_EOL;
    echo "<dt>Password:</dt><dd>".$row['password']."</dd>".PHP_EOL; 
-   echo '</dl></fieldset>'.PHP_EOL;  
+   echo '</dl></fieldset>'.PHP_EOL;
 } else echo "<h2>No customer found!</h2>"; //suitable feedback
 
 mysqli_free_result($result); //free any memory used by the query

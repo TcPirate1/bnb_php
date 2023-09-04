@@ -8,6 +8,7 @@
   </head>
   <body>
     <?php
+      include "checksession.php";
       include "config.php"; //load in any variables
       $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
@@ -30,7 +31,7 @@
         $result = mysqli_query($DBC,$query);
         $rowcount = mysqli_num_rows($result);
     ?>
-    <h2>Logged in as test</h2>
+    <h2>Logged in as <?php echo $_SESSION['username']?></h2>
     <h1>Booking Details View</h1>
     <a href="current_bookings.php">[Return to the booking listing]</a>
     <a href="/bnb_php/">[Return to main page]</a>

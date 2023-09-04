@@ -16,6 +16,7 @@
   </head>
 
   <?php
+    include "checksession.php";
     include "config.php"; //load in any variables
     $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
@@ -87,7 +88,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     }
 
     $id = cleanInput($_POST['roomID']);
-    $custID = 1; //hard coded for the moment
+    $custID = cleanInput($_SESSION['userid']);
 
     if ($error == 0) {
         $query = "INSERT INTO booking (roomID, customerID, checkInDate,checkOutDate,contactNumber,bookingExtras) VALUES (?,?,?,?,?,?)";
