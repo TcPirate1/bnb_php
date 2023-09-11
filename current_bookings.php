@@ -40,14 +40,9 @@
             $rn = $row['roomname'];
                 
                 $res = mysqli_query($DBC,$query);
-                $rowc = mysqli_num_rows($res);
-
-                if($rowc > 0){
-                    $rowr = mysqli_fetch_assoc($res);
-                }
 
                 echo '<tr>
-                <td>'.$rowr['roomname'] .','.$row['checkInDate'].','.$row['checkOutDate'].'</td>';
+                <td>'.$row['roomname'] .','.$row['checkInDate'].','.$row['checkOutDate'].'</td>';
                 echo '<td>'.$row['firstname']. ' '.$row['lastname'].'</td>';
                 
                 echo '<td><a href="booking_details_view.php?id='.$id.'">[view]</a>';
