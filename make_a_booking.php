@@ -6,17 +6,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Make a Booking</title>
-    <link
-      rel="stylesheet"
-      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
-    />
-    <link rel="stylesheet" href="/resources/demos/style.css" />
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   </head>
 
   <?php
     include "checksession.php";
+    include "header.php";
+    include "menu.php";
+    echo '<div id="site_content">';
+    include "sidebar.php";
+    echo '<div id="content">';
     include "config.php"; //load in any variables
     $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
@@ -197,6 +195,10 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         </table>
     </div>
 
+    <?php
+    echo '</div></div>';
+    require_once "footer.php";
+    ?>
   </body>
   <script>
     $(function () {

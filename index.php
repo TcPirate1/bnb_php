@@ -7,15 +7,17 @@
 <?php
 
 include "checksession.php";
-checkUser();
+include "header.php";
+include "menu.php";
+echo '<div id="site_content">';
+include "sidebar.php";
+
+echo '<div id="content">';
+include "content.php";
+
+echo '</div></div>';
+include "footer.php";
 ?>
-<h1>Welcome to Ongaonga Bed & Breakfast!</h1>
-<ul>
-<li><a href="listcustomers.php">Customer listing</a>
-<li><a href="listrooms.php">Rooms listing</a>
-<li><a href="current_bookings.php">Bookings listing</a>
-<li><a href="login.php">Login/Logout</a>
-</ul>
 
 </body>
 </html>
