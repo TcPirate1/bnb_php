@@ -8,6 +8,12 @@
   </head>
   <body>
     <?php
+    include "checksession.php";
+      include "header.php";
+      include "menu.php";
+      echo '<div id="site_content">';
+      include "sidebar.php";
+      echo '<div id="content">';
     include "config.php"; //load in any variables
     $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
@@ -77,5 +83,9 @@ if ($rowcount > 0) {
     <input type="submit" name="submit" value="Delete"/>
     <a href="current_bookings.php">[Cancel]</a>
 </form>
+<?php
+    echo '</div></div>';
+    require_once "footer.php";
+    ?>
   </body>
 </html>

@@ -7,6 +7,12 @@
   </head>
   <body>
     <?php
+     include "checksession.php";
+    include "header.php";
+    include "menu.php";
+    echo '<div id="site_content">';
+    include "sidebar.php";
+    echo '<div id="content">';
   include "config.php";
   $DBC = mysqli_connect(DBHOST,DBUSER,DBPASSWORD,DBDATABASE);
 
@@ -59,5 +65,9 @@
     mysqli_close($DBC);
 ?>
     </table>
+    <?php
+    echo '</div></div>';
+    require_once "footer.php";
+    ?>
   </body>
 </html>
