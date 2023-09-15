@@ -6,6 +6,12 @@
  <body>
 
 <?php
+include "header.php";
+include "menu.php";
+echo '<div id="site_content">';
+include "sidebar.php";
+echo '<div id="content">';
+
 //function to clean input but not validate type and content
 function cleanInput($data) {  
   return htmlspecialchars(stripslashes(trim($data)));
@@ -102,5 +108,10 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
   
    <input type="submit" name="submit" value="Register">
  </form>
+
+<?php
+    echo '</div></div>';
+    require_once "footer.php";
+    ?>
 </body>
 </html>

@@ -3,6 +3,11 @@
  <body>
 
 <?php
+include "header.php";
+include "menu.php";
+echo '<div id="site_content">';
+include "sidebar.php";
+echo '<div id="content">';
 include "config.php"; //load in any variables
 $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 

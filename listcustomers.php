@@ -57,6 +57,13 @@ function searchResult(searchstr) {
 </script>
 </head>
 <body>
+  <?php
+    include "header.php";
+    include "menu.php";
+    echo '<div id="site_content">';
+    include "sidebar.php";
+    echo '<div id="content">';
+    ?>
 
 <h1>Customer List Search by Lastname</h1>
 <h2><a href='registercustomer.php'>[Create new Customer]</a><a href="/bnb_php/">[Return to main page]</a>
@@ -79,5 +86,9 @@ function searchResult(searchstr) {
   </tr>
 </thead>
 </table>
+<?php
+  echo '</div></div>';
+  require_once "footer.php";
+  ?>
 </body>
 </html>

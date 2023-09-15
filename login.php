@@ -10,6 +10,12 @@
 
 <body>
     <?php
+        include "header.php";
+        include "menu.php";
+        echo '<div id="site_content">';
+        include "sidebar.php";
+        echo '<div id="content">';
+        include "config.php";
         include "checksession.php";
 
      
@@ -83,6 +89,10 @@
 
     </form>
 
+    <?php
+    echo '</div></div>';
+    require_once "footer.php";
+    ?>
 </body>
 
 </html>

@@ -3,6 +3,11 @@
  <body>
 
 <?php
+include "header.php";
+include "menu.php";
+echo '<div id="site_content">';
+include "sidebar.php";
+echo '<div id="content">';
 include "config.php"; //load in any variables
 $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
@@ -40,6 +45,10 @@ mysqli_free_result($result); //free any memory used by the query
 mysqli_close($DBC); //close the connection once done
 ?>
 </table>
+<?php
+    echo '</div></div>';
+    require_once "footer.php";
+    ?>
 </body>
 </html>
   
