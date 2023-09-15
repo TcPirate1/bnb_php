@@ -128,7 +128,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       <a href="/bnb_php/">[Return to main page]</a>
     </h2>
 
-    <h2>Booking for <?php echo $_SESSION['username']?></h2>
+    <h2><?php
+    if (isset($_SESSION['username'])){
+      echo "Logged in as ".$_SESSION['username'];
+    }
+    else {
+      echo "No user logged in.";
+    }?></h2>
 
     <form action="edit_a_booking.php" method="POST">
       <input type="hidden" name="id" value="<?php echo $bookid;?>">

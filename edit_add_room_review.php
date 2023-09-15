@@ -12,8 +12,13 @@
     <a href="current_bookings.php">[Return to the booking listing]</a>
     <a href="/bnb_php/">[Return to main page]</a>
     <?php
-    include "checksession.php";
-    include "config.php"; //load in any variables
+     include "checksession.php";
+    include "header.php";
+    include "menu.php";
+    echo '<div id="site_content">';
+    include "sidebar.php";
+    echo '<div id="content">';
+  include "config.php"; //load in any variables
     $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
     if (mysqli_connect_errno()) {
@@ -71,7 +76,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   }
     ?>
 
-    <h2>Review made by <?php echo $_SESSION['username']?></h2>
+    <h2><?php
+    if (isset($_SESSION['username'])){
+      echo "Review made by ". $_SESSION['username'];
+    } else {
+      echo "No user logged in";
+    }?></h2>
 
     <form action="edit_add_room_review.php" method="POST">
       <input type="hidden" name="id" value="<?php echo $bookid;?>">
@@ -81,5 +91,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       <input type="submit" name="submit" value="Update"/>
       <a href="current_bookings.php">[Cancel]</a>
     </form>
+    <?php
+    echo '</div></div>';
+    require_once "footer.php";
+    ?>
   </body>
 </html>
