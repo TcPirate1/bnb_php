@@ -1,0 +1,266 @@
+{
+  "id": "d9388823-e602-4719-a92d-8e1a71ac19c1",
+  "version": "2.0",
+  "name": "IT7537-WebProgramming",
+  "url": "http://localhost/bnb_php/make_a_booking.php",
+  "tests": [{
+    "id": "9f42e09d-eb59-478d-8e4d-00ef8b89dee1",
+    "name": "makeAbooking",
+    "commands": [{
+      "id": "dc8849ef-3348-48ee-bafd-bec2ce19f523",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/bnb_php/make_a_booking.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e35d6dae-2465-4ff8-a653-6736d4b0c7a2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8708a0ed-4b7d-46ce-a457-aa35798792b6",
+      "comment": "",
+      "command": "click",
+      "target": "name=roomID",
+      "targets": [
+        ["name=roomID", "name"],
+        ["css=select", "css:finder"],
+        ["xpath=//select[@name='roomID']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "63331931-1545-4d5c-bd3b-c7e6fdb13b0e",
+      "comment": "",
+      "command": "select",
+      "target": "name=roomID",
+      "targets": [],
+      "value": "label=Miranda, S, 4"
+    }, {
+      "id": "70415bb2-d4a7-4355-bd2e-8481294bed57",
+      "comment": "",
+      "command": "click",
+      "target": "id=from",
+      "targets": [
+        ["id=from", "id"],
+        ["name=from", "name"],
+        ["css=#from", "css:finder"],
+        ["xpath=//input[@id='from']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a3c8f79-fa17-4d1c-9de7-9d82cbc4ff0d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=4",
+      "targets": [
+        ["linkText=4", "linkText"],
+        ["css=.ui-state-hover", "css:finder"],
+        ["xpath=//a[contains(text(),'4')]", "xpath:link"],
+        ["xpath=//div[@id='ui-datepicker-div']/div/table/tbody/tr[2]/td[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[4]", "xpath:href"],
+        ["xpath=//td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'4')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "70bc3f67-3af9-441b-9f3f-6173f943933f",
+      "comment": "",
+      "command": "click",
+      "target": "id=to",
+      "targets": [
+        ["id=to", "id"],
+        ["name=to", "name"],
+        ["css=#to", "css:finder"],
+        ["xpath=//input[@id='to']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf02f04c-ea9e-46e0-ad8b-1181ef3f9163",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=21",
+      "targets": [
+        ["linkText=21", "linkText"],
+        ["css=.ui-state-hover", "css:finder"],
+        ["xpath=//a[contains(text(),'21')]", "xpath:link"],
+        ["xpath=//div[@id='ui-datepicker-div']/div/table/tbody/tr[4]/td[5]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[18]", "xpath:href"],
+        ["xpath=//tr[4]/td[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'21')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4e91bde-d88f-4a88-96ab-d9ebf91e3a6b",
+      "comment": "",
+      "command": "click",
+      "target": "name=contactNum",
+      "targets": [
+        ["name=contactNum", "name"],
+        ["css=input:nth-child(11)", "css:finder"],
+        ["xpath=//input[@name='contactNum']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3706d25d-99c0-44c2-80a0-7f33b3f67339",
+      "comment": "",
+      "command": "type",
+      "target": "name=contactNum",
+      "targets": [
+        ["name=contactNum", "name"],
+        ["css=input:nth-child(11)", "css:finder"],
+        ["xpath=//input[@name='contactNum']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "(021) 123 5698"
+    }, {
+      "id": "e93cc50d-2f46-4041-99df-0fcc2a2f6122",
+      "comment": "",
+      "command": "click",
+      "target": "name=bookingExtras",
+      "targets": [
+        ["name=bookingExtras", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='bookingExtras']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3728dafd-d412-4e6b-bb5f-514ab29f6cb1",
+      "comment": "",
+      "command": "click",
+      "target": "name=bookingExtras",
+      "targets": [
+        ["name=bookingExtras", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='bookingExtras']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0cc31bc3-be80-4bc4-82ca-54047ebd4a27",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=input:nth-child(16)", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "e0e2333d-ba74-4c59-be67-3b8bc704e401",
+    "name": "SearchAvaliability",
+    "commands": [{
+      "id": "a81c7463-e028-4a28-b364-9fd3bd58bae6",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/bnb_php/make_a_booking.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "52806682-60b2-45e1-89f3-901363397c1e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2c5aed64-83a4-4b7d-a8da-81d46831b161",
+      "comment": "",
+      "command": "click",
+      "target": "id=from_date",
+      "targets": [
+        ["id=from_date", "id"],
+        ["name=startDate", "name"],
+        ["css=#from_date", "css:finder"],
+        ["xpath=//input[@id='from_date']", "xpath:attributes"],
+        ["xpath=//form[@id='searchForm']/input", "xpath:idRelative"],
+        ["xpath=//form[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c46061d-b467-481b-8018-5345f90740a7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=13",
+      "targets": [
+        ["linkText=13", "linkText"],
+        ["css=.ui-state-hover", "css:finder"],
+        ["xpath=//a[contains(text(),'13')]", "xpath:link"],
+        ["xpath=//div[@id='ui-datepicker-div']/table/tbody/tr[3]/td[4]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[13]", "xpath:href"],
+        ["xpath=//tr[3]/td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'13')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "494afa6f-67db-4e02-a8ab-14633f2d1739",
+      "comment": "",
+      "command": "click",
+      "target": "id=to_date",
+      "targets": [
+        ["id=to_date", "id"],
+        ["name=endDate", "name"],
+        ["css=#to_date", "css:finder"],
+        ["xpath=//input[@id='to_date']", "xpath:attributes"],
+        ["xpath=//form[@id='searchForm']/input[2]", "xpath:idRelative"],
+        ["xpath=//form[2]/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d54f697a-73c8-413b-bf28-7b7ee15b081a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=19",
+      "targets": [
+        ["linkText=19", "linkText"],
+        ["css=.ui-state-hover", "css:finder"],
+        ["xpath=//a[contains(text(),'19')]", "xpath:link"],
+        ["xpath=//div[@id='ui-datepicker-div']/table/tbody/tr[4]/td[3]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[19]", "xpath:href"],
+        ["xpath=//tr[4]/td[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'19')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a226ba1e-12a0-42ec-af64-0eeb6a14ff3d",
+      "comment": "",
+      "command": "click",
+      "target": "css=#searchForm > input:nth-child(5)",
+      "targets": [
+        ["css=#searchForm > input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@value='Search avaliability']", "xpath:attributes"],
+        ["xpath=//form[@id='searchForm']/input[3]", "xpath:idRelative"],
+        ["xpath=//form[2]/input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "75be9ca1-ee34-4089-bfb0-f575b38a4466",
+    "name": "WebProgrammingTestSuite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["9f42e09d-eb59-478d-8e4d-00ef8b89dee1", "e0e2333d-ba74-4c59-be67-3b8bc704e401"]
+  }],
+  "urls": ["http://localhost/bnb_php/make_a_booking.php"],
+  "plugins": []
+}
