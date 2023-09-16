@@ -86,7 +86,14 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     }
 
     $id = cleanInput($_POST['roomID']);
-    $custID = cleanInput($_SESSION['userid']);
+
+    if (checkUser()) {
+      $custID = cleanInput($_SESSION['userid']);;
+    }
+    else {
+      echo "<h2>Not logged in. Please <a href=\"login.php\">login</a> to make a booking</h2>";
+      exit;
+    }
 
     if ($error == 0) {
         $query = "INSERT INTO booking (roomID, customerID, checkInDate,checkOutDate,contactNumber,bookingExtras) VALUES (?,?,?,?,?,?)";
@@ -112,7 +119,12 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     <h2><a href="current_bookings.php">[Return to the Bookings listing]</a>
     <a href="/bnb_php/">[Return to main page]</a></h2>
 
-    <h2>Booking for Test</h2>
+    <h2><?php if (isset($_SESSION['username'])){
+      echo "Booking for ".$_SESSION['username'];
+    } else {
+      echo "Not logged in";
+    }
+    ?></h2>
     <form method="POST" action="make_a_booking.php">
       <label for="roomNO">Room (name,type,beds):</label>
       <select name="roomID">

@@ -12,8 +12,9 @@ function checkUser(){
     return TRUE;
 
     else{
-        $_SESSION['URI'] ='/' .$_SERVER['REQUEST_URI'];
-        header(('Location:/bnb_php/login.php'),true, 303);
+        // $_SESSION['URI'] ='/' .$_SERVER['REQUEST_URI'];
+        // header(('Location:/bnb_php/login.php'),true, 303);
+        return false;
 
     }
 }
