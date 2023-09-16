@@ -1,9 +1,14 @@
 <?php
+   include "ChromePhp.php"; //ChromePhp library
    include "config.php"; //load in any variables
    $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE) or die();
 
    $startDate = $_POST['startDate'];
    $endDate = $_POST['endDate'];
+
+   ChromePhp::log($startDate);
+   ChromePhp::log($endDate);
+   // Logging the start and end date
 
    $searchresult ='';
    if(true){
@@ -20,6 +25,8 @@
         while ($row = mysqli_fetch_assoc($result)){
             $rows[]= $row;
         }
+        ChromePhp::log($rows); //log the array
+
         //take the array of our 1 or more bookings and turn it into a JSON text
         $searchresult = json_encode($rows);
 

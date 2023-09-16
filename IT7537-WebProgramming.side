@@ -7,21 +7,21 @@
     "id": "9f42e09d-eb59-478d-8e4d-00ef8b89dee1",
     "name": "makeAbooking",
     "commands": [{
-      "id": "dc8849ef-3348-48ee-bafd-bec2ce19f523",
+      "id": "99bbf425-1337-4a4f-a5dc-101f996c19d9",
       "comment": "",
       "command": "open",
       "target": "http://localhost/bnb_php/make_a_booking.php",
       "targets": [],
       "value": ""
     }, {
-      "id": "e35d6dae-2465-4ff8-a653-6736d4b0c7a2",
+      "id": "cbf7c14c-eef7-4422-a11a-7e3ff5687879",
       "comment": "",
       "command": "setWindowSize",
       "target": "1536x824",
       "targets": [],
       "value": ""
     }, {
-      "id": "8708a0ed-4b7d-46ce-a457-aa35798792b6",
+      "id": "eccd3302-9a12-4734-81e5-b8feabd0f4a6",
       "comment": "",
       "command": "click",
       "target": "name=roomID",
@@ -34,14 +34,14 @@
       ],
       "value": ""
     }, {
-      "id": "63331931-1545-4d5c-bd3b-c7e6fdb13b0e",
+      "id": "3df4c133-4158-4831-928b-7b6b5ee3a2ac",
       "comment": "",
       "command": "select",
       "target": "name=roomID",
       "targets": [],
-      "value": "label=Miranda, S, 4"
+      "value": "label=Scarlett, D, 2"
     }, {
-      "id": "70415bb2-d4a7-4355-bd2e-8481294bed57",
+      "id": "1f16cb31-f501-4375-a779-a59599ccb93a",
       "comment": "",
       "command": "click",
       "target": "id=from",
@@ -55,22 +55,22 @@
       ],
       "value": ""
     }, {
-      "id": "0a3c8f79-fa17-4d1c-9de7-9d82cbc4ff0d",
+      "id": "3b3b8f41-5123-4bd9-b572-7ca96f62ed99",
       "comment": "",
       "command": "click",
-      "target": "linkText=4",
+      "target": "linkText=18",
       "targets": [
-        ["linkText=4", "linkText"],
+        ["linkText=18", "linkText"],
         ["css=.ui-state-hover", "css:finder"],
-        ["xpath=//a[contains(text(),'4')]", "xpath:link"],
-        ["xpath=//div[@id='ui-datepicker-div']/div/table/tbody/tr[2]/td[2]/a", "xpath:idRelative"],
-        ["xpath=(//a[contains(@href, '#')])[4]", "xpath:href"],
-        ["xpath=//td[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'4')]", "xpath:innerText"]
+        ["xpath=//a[contains(text(),'18')]", "xpath:link"],
+        ["xpath=//div[@id='ui-datepicker-div']/div/table/tbody/tr[4]/td[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[18]", "xpath:href"],
+        ["xpath=//tr[4]/td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'18')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "70bc3f67-3af9-441b-9f3f-6173f943933f",
+      "id": "677b19ce-e008-4299-a519-5bc44f0c7264",
       "comment": "",
       "command": "click",
       "target": "id=to",
@@ -84,22 +84,22 @@
       ],
       "value": ""
     }, {
-      "id": "bf02f04c-ea9e-46e0-ad8b-1181ef3f9163",
+      "id": "2f0de192-a0a5-418a-99ff-ce04311a0b55",
       "comment": "",
       "command": "click",
-      "target": "linkText=21",
+      "target": "linkText=20",
       "targets": [
-        ["linkText=21", "linkText"],
+        ["linkText=20", "linkText"],
         ["css=.ui-state-hover", "css:finder"],
-        ["xpath=//a[contains(text(),'21')]", "xpath:link"],
-        ["xpath=//div[@id='ui-datepicker-div']/div/table/tbody/tr[4]/td[5]/a", "xpath:idRelative"],
-        ["xpath=(//a[contains(@href, '#')])[18]", "xpath:href"],
-        ["xpath=//tr[4]/td[5]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'21')]", "xpath:innerText"]
+        ["xpath=//a[contains(text(),'20')]", "xpath:link"],
+        ["xpath=//div[@id='ui-datepicker-div']/div/table/tbody/tr[4]/td[4]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[3]", "xpath:href"],
+        ["xpath=//td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'20')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "a4e91bde-d88f-4a88-96ab-d9ebf91e3a6b",
+      "id": "1b117936-a993-4807-8e69-4552a30f1af7",
       "comment": "",
       "command": "click",
       "target": "name=contactNum",
@@ -112,7 +112,7 @@
       ],
       "value": ""
     }, {
-      "id": "3706d25d-99c0-44c2-80a0-7f33b3f67339",
+      "id": "967f2e8f-d85a-4eb8-87fd-614720207525",
       "comment": "",
       "command": "type",
       "target": "name=contactNum",
@@ -123,35 +123,205 @@
         ["xpath=//div[@id='content']/form/input[3]", "xpath:idRelative"],
         ["xpath=//input[3]", "xpath:position"]
       ],
-      "value": "(021) 123 5698"
+      "value": "(021) 256 9874"
     }, {
-      "id": "e93cc50d-2f46-4041-99df-0fcc2a2f6122",
+      "id": "7254ed7a-31df-47ae-84ba-413a13f203aa",
       "comment": "",
       "command": "click",
-      "target": "name=bookingExtras",
+      "target": "name=submit",
       "targets": [
-        ["name=bookingExtras", "name"],
-        ["css=textarea", "css:finder"],
-        ["xpath=//textarea[@name='bookingExtras']", "xpath:attributes"],
-        ["xpath=//div[@id='content']/form/textarea", "xpath:idRelative"],
-        ["xpath=//textarea", "xpath:position"]
+        ["name=submit", "name"],
+        ["css=input:nth-child(16)", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "3728dafd-d412-4e6b-bb5f-514ab29f6cb1",
+      "id": "93d27af1-2841-4dec-b55d-0a625f3e73bf",
       "comment": "",
       "command": "click",
-      "target": "name=bookingExtras",
+      "target": "linkText=login",
       "targets": [
-        ["name=bookingExtras", "name"],
-        ["css=textarea", "css:finder"],
-        ["xpath=//textarea[@name='bookingExtras']", "xpath:attributes"],
-        ["xpath=//div[@id='content']/form/textarea", "xpath:idRelative"],
-        ["xpath=//textarea", "xpath:position"]
+        ["linkText=login", "linkText"],
+        ["css=h2 > a", "css:finder"],
+        ["xpath=//a[contains(text(),'login')]", "xpath:link"],
+        ["xpath=//div[@id='content']/h2/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'login.php')])[2]", "xpath:href"],
+        ["xpath=//h2/a", "xpath:position"],
+        ["xpath=//a[contains(.,'login')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "0cc31bc3-be80-4bc4-82ca-54047ebd4a27",
+      "id": "4521ca21-22b2-424f-a380-004d1a0aade6",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/p/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fd3e05df-f1e5-47f4-ba67-274496f0a717",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/p/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "terence@email.com"
+    }, {
+      "id": "dc990871-36c1-4465-b19f-886d01c8e4b1",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/p[2]/input", "xpath:idRelative"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": "12345678"
+    }, {
+      "id": "6cea3afb-fc69-4666-8314-8b67b2c824b6",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/p[2]/input", "xpath:idRelative"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "099f9a9c-b70c-4047-9bde-106af2bcaf5f",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(4) > a",
+      "targets": [
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Bookings listing')]", "xpath:link"],
+        ["xpath=//ul[@id='menu']/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'current_bookings.php')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d1d47fb8-69d6-48f1-95ef-094f28a2281a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=[Make a booking]",
+      "targets": [
+        ["linkText=[Make a booking]", "linkText"],
+        ["css=h2 > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'[Make a booking]')]", "xpath:link"],
+        ["xpath=//div[@id='content']/h2/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'make_a_booking.php')]", "xpath:href"],
+        ["xpath=//h2/a", "xpath:position"],
+        ["xpath=//a[contains(.,'[Make a booking]')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "28a30295-300d-4029-8eb5-ea450b4c589d",
+      "comment": "",
+      "command": "click",
+      "target": "id=from",
+      "targets": [
+        ["id=from", "id"],
+        ["name=from", "name"],
+        ["css=#from", "css:finder"],
+        ["xpath=//input[@id='from']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input", "xpath:idRelative"],
+        ["xpath=//div[2]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d92dda31-a423-4cc1-a957-ae56566aaf20",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=18",
+      "targets": [
+        ["linkText=18", "linkText"],
+        ["css=.ui-state-hover", "css:finder"],
+        ["xpath=//a[contains(text(),'18')]", "xpath:link"],
+        ["xpath=//div[@id='ui-datepicker-div']/div/table/tbody/tr[4]/td[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[18]", "xpath:href"],
+        ["xpath=//tr[4]/td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'18')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e95d8dac-bca5-4335-9e12-a96385ba9ed8",
+      "comment": "",
+      "command": "click",
+      "target": "id=to",
+      "targets": [
+        ["id=to", "id"],
+        ["name=to", "name"],
+        ["css=#to", "css:finder"],
+        ["xpath=//input[@id='to']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a48f983b-bde6-456b-bc76-ac1f1456cc50",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=19",
+      "targets": [
+        ["linkText=19", "linkText"],
+        ["css=.ui-state-hover", "css:finder"],
+        ["xpath=//a[contains(text(),'19')]", "xpath:link"],
+        ["xpath=//div[@id='ui-datepicker-div']/div/table/tbody/tr[4]/td[3]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//td[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'19')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4e0cd389-a1fd-4d7e-b517-ce6c5d741931",
+      "comment": "",
+      "command": "click",
+      "target": "name=contactNum",
+      "targets": [
+        ["name=contactNum", "name"],
+        ["css=input:nth-child(11)", "css:finder"],
+        ["xpath=//input[@name='contactNum']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71258a6d-810d-4b57-9af8-adc8a1b484ff",
+      "comment": "",
+      "command": "type",
+      "target": "name=contactNum",
+      "targets": [
+        ["name=contactNum", "name"],
+        ["css=input:nth-child(11)", "css:finder"],
+        ["xpath=//input[@name='contactNum']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "(021) 256 6987"
+    }, {
+      "id": "d6c724c6-a93e-4d31-bb60-06e17b2f3e58",
       "comment": "",
       "command": "click",
       "target": "name=submit",
