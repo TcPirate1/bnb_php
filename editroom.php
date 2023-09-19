@@ -21,7 +21,7 @@ function cleanInput($data) {
   return htmlspecialchars(stripslashes(trim($data)));
 }
 
-//retrieve the roomid from the URL
+//retrieve the roomID from the URL
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $id = $_GET['id'];
     if (empty($id) or !is_numeric($id)) {
@@ -75,7 +75,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 }
 //locate the room to edit by using the roomID
 //we also include the room ID in our form for sending it back for saving the data
-$query = 'SELECT roomID,roomname,description,roomtype,beds FROM room WHERE roomid='.$id;
+$query = 'SELECT roomID,roomname,description,roomtype,beds FROM room WHERE roomID='.$id;
 $result = mysqli_query($DBC,$query);
 $rowcount = mysqli_num_rows($result);
 if ($rowcount > 0) {

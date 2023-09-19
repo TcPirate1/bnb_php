@@ -33,7 +33,7 @@ if (empty($id) or !is_numeric($id)) {
 //prepare a query and send it to the server
 //NOTE for simplicity purposes ONLY we are not using prepared queries
 //make sure you ALWAYS use prepared queries when creating custom SQL like below
-$query = 'SELECT * FROM room WHERE roomid='.$id;
+$query = 'SELECT * FROM room WHERE roomID='.$id;
 $result = mysqli_query($DBC,$query);
 $rowcount = mysqli_num_rows($result); 
 ?>

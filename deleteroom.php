@@ -23,7 +23,7 @@ function cleanInput($data) {
   return htmlspecialchars(stripslashes(trim($data)));
 }
 
-//retrieve the Roomid from the URL
+//retrieve the roomID from the URL
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $id = $_GET['id'];
     if (empty($id) or !is_numeric($id)) {
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Delete')) {     
     $error = 0; //clear our error flag
     $msg = 'Error: ';  
-//RoomID (sent via a form it is a string not a number so we try a type conversion!)    
+//roomID (sent via a form it is a string not a number so we try a type conversion!)    
     if (isset($_POST['id']) and !empty($_POST['id']) and is_integer(intval($_POST['id']))) {
        $id = cleanInput($_POST['id']); 
     } else {
@@ -48,7 +48,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     
 //save the Room data if the error flag is still clear and Room id is > 0
     if ($error == 0 and $id > 0) {
-        $query = "DELETE FROM Room WHERE RoomID=?";
+        $query = "DELETE FROM room WHERE roomID=?";
         $stmt = mysqli_prepare($DBC,$query); //prepare the query
         mysqli_stmt_bind_param($stmt,'i', $id); 
         mysqli_stmt_execute($stmt);
@@ -64,7 +64,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 //prepare a query and send it to the server
 //NOTE for simplicity purposes ONLY we are not using prepared queries
 //make sure you ALWAYS use prepared queries when creating custom SQL like below
-$query = 'SELECT * FROM Room WHERE Roomid='.$id;
+$query = 'SELECT * FROM room WHERE roomID='.$id;
 $result = mysqli_query($DBC,$query);
 $rowcount = mysqli_num_rows($result); 
 ?>
