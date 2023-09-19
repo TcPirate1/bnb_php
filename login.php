@@ -10,18 +10,13 @@
 
 <body>
     <?php
+        include "checksession.php";
         include "header.php";
         include "menu.php";
         echo '<div id="site_content">';
         include "sidebar.php";
         echo '<div id="content">';
         include "config.php";
-        include "checksession.php";
-
-     
-                 
-        //simple logout
-        if (isset($_POST['logout'])) logout();
          
         if (isset($_POST['login']) and !empty($_POST['login']) and ($_POST['login'] == 'Login')) {
             include "config.php"; //load in any variables
@@ -69,7 +64,7 @@
     <h1>Login</h1>
     <h2>
         <a href="registercustomer.php">[Create new customer]</a>
-        <a href="/bnb_php/">[Return to main page]</a>
+        <a href="/">[Return to main page]</a>
     </h2>
 
     <form method="POST">
@@ -83,7 +78,6 @@
         <input type="password" id="password" name="password" maxlength="32" autocomplete="off"> 
     </p>
     <input type="submit" name="login" value="Login">
-    <input  type="submit" name="logout" value="Logout">   
 
 
 

@@ -10,7 +10,7 @@
   <body>
     <h1>Would you like to add a review?</h1>
     <a href="current_bookings.php">[Return to the booking listing]</a>
-    <a href="/bnb_php/">[Return to main page]</a>
+    <a href="/">[Return to main page]</a>
     <?php
      include "checksession.php";
     include "header.php";

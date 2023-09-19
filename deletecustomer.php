@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
-<html><head><title>View Customer</title> </head>
+<html><head><title>Delete Customer</title> </head>
  <body>
 
 <?php
+include "checksession.php";
 include "header.php";
 include "menu.php";
 echo '<div id="site_content">';
@@ -69,7 +70,7 @@ $result = mysqli_query($DBC,$query);
 $rowcount = mysqli_num_rows($result); 
 ?>
 <h1>Customer details preview before deletion</h1>
-<h2><a href='listcustomers.php'>[Return to the Customer listing]</a><a href='/bnb_php/'>[Return to the main page]</a></h2>
+<h2><a href='listcustomers.php'>[Return to the Customer listing]</a><a href='/'>[Return to the main page]</a></h2>
 <?php
 
 //makes sure we have the customer

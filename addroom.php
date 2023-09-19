@@ -1,4 +1,8 @@
  <!DOCTYPE HTML>
+ <?php
+include "checksession.php";
+loginStatus();
+?>
 <html><head><title>Add a new room</title> </head>
  <body>
 
@@ -61,7 +65,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 }
 ?>
 <h1>Add a new room</h1>
-<h2><a href='listrooms.php'>[Return to the room listing]</a><a href='/bnb_php/'>[Return to the main page]</a></h2>
+<h2><a href='listrooms.php'>[Return to the room listing]</a><a href='/'>[Return to the main page]</a></h2>
 
 <form method="POST" action="addroom.php">
   <p>

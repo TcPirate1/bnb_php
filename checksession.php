@@ -13,7 +13,7 @@ function checkUser(){
 
     else{
         // $_SESSION['URI'] ='/' .$_SERVER['REQUEST_URI'];
-        // header(('Location:/bnb_php/login.php'),true, 303);
+        // header(('Location:/login.php'),true, 303);
         return false;
 
     }
@@ -38,11 +38,11 @@ function login($id, $username){
 
     }
     else{
-        $_SESSION['URI'] = '/bnb_php/current_bookings.php';
+        $_SESSION['URI'] = '/current_bookings.php';
         $uri = $_SESSION['URI'];
     }
 
-    header('Location: /bnb_php/current_bookings.php', true, 303);
+    header('Location: /current_bookings.php', true, 303);
 
     $_SESSION['loggedin']=1;
     $_SESSION['userid']=$id;
@@ -55,7 +55,7 @@ function logout(){
     $_SESSION['userid']= -1;
     $_SESSION['username']= '';
     $_SESSION['URI']='';
-    header('Location:/bnb_php/login.php', true, 303);
+    header('Location:/login.php', true, 303);
 
 }
 

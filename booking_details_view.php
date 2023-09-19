@@ -9,6 +9,7 @@
   <body>
     <?php
       include "checksession.php";
+      loginStatus();
       include "header.php";
       include "menu.php";
       echo '<div id="site_content">';
@@ -46,7 +47,7 @@
 
     <h1>Booking Details View</h1>
     <a href="current_bookings.php">[Return to the booking listing]</a>
-    <a href="/bnb_php/">[Return to main page]</a>
+    <a href="/">[Return to main page]</a>
     <?php
     if ($rowcount > 0) {  
       echo "<fieldset><legend>Booking #$id</legend><dl>";

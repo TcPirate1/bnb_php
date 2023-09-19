@@ -30,7 +30,7 @@
  ?>
     <h1>Current bookings</h1>
     <h2><a href="make_a_booking.php">[Make a booking]</a>
-    <a href="/bnb_php/">[Return to main page]</a></h2>
+    <a href="/">[Return to main page]</a></h2>
 
     <table border='1'>
       <thead>
