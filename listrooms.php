@@ -3,6 +3,7 @@
  <body>
 
 <?php
+include "checksession.php";
 include "header.php";
 include "menu.php";
 echo '<div id="site_content">';
@@ -24,7 +25,7 @@ $result = mysqli_query($DBC,$query);
 $rowcount = mysqli_num_rows($result); 
 ?>
 <h1>Room list</h1>
-<h2><a href='addroom.php'>[Add a room]</a><a href="/bnb_php/">[Return to main page]</a></h2>
+<h2><a href='addroom.php'>[Add a room]</a><a href="/">[Return to main page]</a></h2>
 <table border="1">
 <thead><tr><th>Room Name</th><th>Type</th><th>Action</th></tr></thead>
 <?php
@@ -35,8 +36,10 @@ if ($rowcount > 0) {
 	  $id = $row['roomID'];	
 	  echo '<tr><td>'.$row['roomname'].'</td><td>'.$row['roomtype'].'</td>';
 	  echo     '<td><a href="viewroom.php?id='.$id.'">[view]</a>';
-	  echo         '<a href="editroom.php?id='.$id.'">[edit]</a>';
+      if ($_SESSION['loggedin'] == 1){
+      echo         '<a href="editroom.php?id='.$id.'">[edit]</a>';
 	  echo         '<a href="deleteroom.php?id='.$id.'">[delete]</a></td>';
+      }
       echo '</tr>'.PHP_EOL;
    }
 } else echo "<h2>No rooms found!</h2>"; //suitable feedback

@@ -58,6 +58,7 @@ function searchResult(searchstr) {
 </head>
 <body>
   <?php
+    include "checksession.php";
     include "header.php";
     include "menu.php";
     echo '<div id="site_content">';
@@ -66,7 +67,7 @@ function searchResult(searchstr) {
     ?>
 
 <h1>Customer List Search by Lastname</h1>
-<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="/bnb_php/">[Return to main page]</a>
+<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="/">[Return to main page]</a>
 </h2>
 <form>
   <label for="lastname">Lastname: </label>

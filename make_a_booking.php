@@ -117,7 +117,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
   <body>
     <h1>Make a booking</h1>
     <h2><a href="current_bookings.php">[Return to the Bookings listing]</a>
-    <a href="/bnb_php/">[Return to main page]</a></h2>
+    <a href="/">[Return to main page]</a></h2>
 
     <h2><?php if (isset($_SESSION['username'])){
       echo "Booking for ".$_SESSION['username'];

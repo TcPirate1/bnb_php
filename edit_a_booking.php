@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <h1>Edit a booking</h1>
     <h2>
       <a href="current_bookings.php">[Return to the Bookings listing]</a>
-      <a href="/bnb_php/">[Return to main page]</a>
+      <a href="/">[Return to main page]</a>
     </h2>
 
     <h2><?php
